@@ -6,7 +6,7 @@ module.exports.help = {
     name: "guildBanAdd"
 }
 module.exports.run = async (client, guildConfig, ban) => {
-    if (!(guildConfig.logs || guildConfig.logs.members)) return
+    if ((!guildConfig.logs || !guildConfig.logs.members)) return
 
     let channel = getChannel(ban, guildConfig.logs.members)
 

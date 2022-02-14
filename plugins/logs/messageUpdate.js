@@ -10,7 +10,7 @@ module.exports.run = async (client, guildConfig, oldMessage, newMessage) => {
         oldMessage.content.trim() === newMessage.content.trim() ||
         oldMessage.content === null ||
         newMessage.content === null ||
-        !(guildConfig.logs || guildConfig.logs.message)
+        !guildConfig.logs || !guildConfig.logs.message
     ) return
 
     let channel = newMessage.guild.channels.cache.get(guildConfig.logs.message)

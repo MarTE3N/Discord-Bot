@@ -12,15 +12,15 @@ module.exports.run = async (client, message, args, guildConfig) => {
         .setTitle(`<a:deny:${emoji_deny}> Inccorect use`)
         .addField(` ${guildConfig.prefix}settings complaints <from_channel/to_channel> <channel>`, `❯ Complaints settings`, false)
         .addField(` ${guildConfig.prefix}settings logs <message/member/voice> <channel>`, `❯ Setting the logs `, false)
-    if (!(args[0] || args[1])) return message.reply({embeds: [wrong_use]})
+    if (!args[0] || !args[1]) return message.reply({embeds: [wrong_use]})
 
     if (args[0].toLowerCase() === "prefix") {
         if (guildConfig.prefix === args[1]){
-            return message.reply({embeds: [new MessageEmbed() .setColor(color_deny) .setDescription(`<a:deny:${emoji_deny}> why are you trying to change the prefix to the current one`)]})
+            return message.reply({embeds: [new MessageEmbed() .setColor(color_deny) .setDescription(`<a:deny:${emoji_deny}> Why are you trying to change the prefix to the current one`)]})
         }else {
             guildConfig.prefix = args[1]
             guildConfig.save()
-            return message.reply({embeds: [new MessageEmbed() .setColor(color_approve) .setDescription(`<a:approve:${emoji_approve}> Zmieniłeś prefix na ${args[1]}`)]})
+            return message.reply({embeds: [new MessageEmbed() .setColor(color_approve) .setDescription(`<a:approve:${emoji_approve}> You change the prefix to ${args[1]}`)]})
         }
     }
 

@@ -6,7 +6,7 @@ module.exports.help = {
 }
 module.exports.run = async (client, guildConfig, messages) => {
 
-    if (!(guildConfig.logs || guildConfig.logs.message)) return
+    if ((!guildConfig.logs || !guildConfig.logs.message)) return
     let channel_db = client.channels.cache.get(guildConfig.logs.message)
 
     if (channel_db === undefined ||

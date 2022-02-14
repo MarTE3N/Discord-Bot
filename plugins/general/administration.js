@@ -11,14 +11,14 @@ module.exports.run = async (client, message, args, guildConfig) => {
         if (args[0]){
             let wrong_embed = new MessageEmbed()
                 .setColor("#ee4846")
-                .setTitle(`<a:deny:${emoji_deny}> Nie poprawne użycie`)
+                .setTitle(`<a:deny:${emoji_deny}> Incorrect usage`)
                 .setDescription(
                     `${guildConfig.prefix}adminstration add <role> <position> <nazwa>\n`+
                     `${guildConfig.prefix}adminstration remove <role>`
                 )
             if (args[0] === "add")
             {
-                if (!(args[1] || args[2] || args[3])) return  message.reply({ embeds: [wrong_embed]})
+                if (!args[1] || !args[2] || !args[3]) return  message.reply({ embeds: [wrong_embed]})
 
                 let role = getRole(message, args[1])
                 

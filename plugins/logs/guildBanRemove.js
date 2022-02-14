@@ -5,7 +5,7 @@ module.exports.help = {
     name: "guildBanRemove"
 }
 module.exports.run = async (client, guildConfig, ban) => {
-    if (!(guildConfig.logs || guildConfig.logs.members)) return
+    if ((!guildConfig.logs || !guildConfig.logs.members)) return
 
     let channel = ban.guild.channels.cache.get(guildConfig.members)
 

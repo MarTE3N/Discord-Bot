@@ -9,7 +9,7 @@ module.exports.run = async (client, guildConfig, message) => {
         typeof message.author === "undefined" ||
         message.author && message.author.bot === true ||
         message.channel && message.channel.type !== "GUILD_TEXT" ||
-        !(guildConfig.logs || guildConfig.logs.message)
+        !guildConfig.logs || !guildConfig.logs.message
     ) return
 
     let channel = message.guild.channels.cache.get(guildConfig.logs.message)

@@ -5,7 +5,7 @@ module.exports.help = {
     name: "guildMemberRemove"
 }
 module.exports.run = async (client, guildConfig, member) => {
-    if (!(guildConfig.logs || guildConfig.logs.members)) return
+    if ((!guildConfig.logs || !guildConfig.logs.members)) return
 
     let channel = member.guild.channels.cache.get(guildConfig.logs.members)
 

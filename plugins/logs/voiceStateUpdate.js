@@ -7,7 +7,7 @@ module.exports.help = {
 module.exports.run = async (client, guildConfig, oldState, newState) => {
     if (oldState.channel === null && newState.channel === null ||
         oldState.channel === newState.channel ||
-        !(guildConfig.logs || guildConfig.logs.voiceStates) ||
+        !guildConfig.logs || !guildConfig.logs.voiceStates ||
         !newState.member
     ) return;
 
