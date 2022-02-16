@@ -34,5 +34,6 @@ module.exports.run = async (client, guildConfig, message) => {
                     `Deleted message:\n \`\`\`${message.content.replace(/`/g, "'")}\`\`\`` +
                     ((audit_log && Date.now() - audit_log.createdTimestamp < 5000) ? `By **${audit_log?.executor.tag}**` : "")
                 )
-    ]})
+    ],
+    files: [...message.attachments.values()]})
 }

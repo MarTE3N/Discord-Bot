@@ -67,19 +67,22 @@ client.on("ready", async () => {
 })
 
 
-client.on("channelCreate", channel => event_send("channelCreate",{arg_one: channel}, channel.guildId, client).catch(e => {throw new Error(e)}))
-client.on("channelDelete", channel => event_send("channelDelete",{arg_one: channel}, channel.guildId, client).catch(e => {throw new Error(e)}))
-client.on("channelUpdate", (oldChannel, newChannel) => event_send("channelUpdate",{arg_one:oldChannel, arg_two:newChannel}, newChannel.guildId, client).catch(e => {throw new Error(e)}))
-client.on("guildBanAdd", ban => event_send("guildBanAdd",{arg_one:ban}, ban.guild.id, client).catch(e => {throw new Error(e)}))
-client.on("guildBanRemove", ban => event_send("guildBanRemove",{arg_one:ban}, ban.guild.id, client).catch(e => {throw new Error(e)}))
-client.on("guildMemberAdd", member => event_send("guildMemberAdd",{arg_one:member}, member.guild.id, client).catch(e => {throw new Error(e)}))
-client.on("guildMemberRemove", member => event_send("guildMemberRemove",{arg_one:member}, member.guild.id, client).catch(e => {throw new Error(e)}))
-client.on("guildMemberUpdate", (oldMember, newMember) => event_send("guildMemberUpdate",{arg_one:oldMember, arg_two:newMember}, newMember.guild.id, client).catch(e => {throw new Error(e)}))
-client.on("interactionCreate", interaction => event_send("interactionCreate",{arg_one: interaction}, interaction.guild.id, client).catch(e => {throw new Error(e)}))
-client.on('messageCreate', async message => event_send("messageCreate",{arg_one: message}, message.guildId, client).catch(e => {throw new Error(e)}))
-client.on('messageDelete', async message => event_send("messageDelete",{arg_one: message}, message.guildId, client).catch(e => {throw new Error(e)}))
-client.on('messageDeleteBulk', async messages => event_send("messageDeleteBulk",{arg_one: messages}, messages.first().guildId, client).catch(e => {throw new Error(e)}))
-client.on('messageUpdate', async (oldMessage, newMessage) => event_send("messageUpdate",{arg_one: oldMessage, arg_two:newMessage}, newMessage.guildId, client).catch(e => {throw new Error(e)}))
+client.on('voiceStateUpdate', (oldChannel, newChannel) => event_send('voiceStateUpdate', {arg_one: oldChannel, arg_two: newChannel}, (oldChannel ? oldChannel.guild.id : newChannel.guild.id), client))
+client.on("channelCreate", channel => event_send("channelCreate",{arg_one: channel}, channel.guildId, client))
+client.on("channelDelete", channel => event_send("channelDelete",{arg_one: channel}, channel.guildId, client))
+client.on("channelUpdate", (oldChannel, newChannel) => event_send("channelUpdate",{arg_one:oldChannel, arg_two:newChannel}, newChannel.guildId, client))
+client.on("guildBanAdd", ban => event_send("guildBanAdd",{arg_one:ban}, ban.guild.id, client))
+client.on("guildBanRemove", ban => event_send("guildBanRemove",{arg_one:ban}, ban.guild.id, client))
+client.on("guildMemberAdd", member => event_send("guildMemberAdd",{arg_one:member}, member.guild.id, client))
+client.on("guildMemberRemove", member => event_send("guildMemberRemove",{arg_one:member}, member.guild.id, client))
+client.on("guildMemberUpdate", (oldMember, newMember) => event_send("guildMemberUpdate",{arg_one:oldMember, arg_two:newMember}, newMember.guild.id, client))
+client.on("interactionCreate", interaction => event_send("interactionCreate",{arg_one: interaction}, interaction.guild.id, client))
+client.on('messageCreate', async message => event_send("messageCreate",{arg_one: message}, message.guildId, client))
+client.on('messageDelete', async message => event_send("messageDelete",{arg_one: message}, message.guildId, client))
+client.on('messageDeleteBulk', async messages => event_send("messageDeleteBulk",{arg_one: messages}, messages.first().guildId, client))
+client.on('messageUpdate', async (oldMessage, newMessage) => event_send("messageUpdate",{arg_one: oldMessage, arg_two:newMessage}, newMessage.guildId, client))
+
+
 client.on("apiRequest", request => console.log(`${colors_log.fg.cyan}[${request.method.toUpperCase()}] ${request.route}${colors_log.reset}`))
 
 

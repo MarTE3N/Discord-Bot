@@ -36,7 +36,7 @@ module.exports.run = async (client, guildConfig, oldState, newState) => {
     else if (oldState.channelId && newState.channelId && oldState.channel && newState.channel){
         embed.setColor("#0088d2")
         embed.setFooter({text: "Change: "})
-        embed.setTitle(`${newState.member.user.tag} changed the Channel`)
+        embed.setTitle(`${newState.member.user.tag} changed the channel`)
         embed.setDescription(`He's changed the channel from \n<#${oldState.channel.id}> (${oldState.channel.name})\nto\n<#${newState.channel.id}> (${newState.channel.name})`)
     }
     channel.send({embeds: [embed]})
